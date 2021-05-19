@@ -23,7 +23,7 @@ List<Product> products = [
     size: 750,
     description: dummyText,
     image: 'assets/images/chivas_18.png',
-    color: Color(0xFF3D82AE),
+    color: Color(0xFF48768C),
   ),
   Product(
     id: 2,
@@ -32,7 +32,7 @@ List<Product> products = [
     size: 1000,
     description: dummyText,
     image: 'assets/images/ciroc.png',
-    color: Color(0xFFBB9D49),
+    color: Color(0xFF60C9FD),
   ),
   Product(
     id: 3,
@@ -50,7 +50,7 @@ List<Product> products = [
     size: 1000,
     description: dummyText,
     image: 'assets/images/jack.png',
-    color: Color(0xFFEA9911),
+    color: Color(0xFFF2A516),
   ),
   Product(
     id: 5,
@@ -59,7 +59,7 @@ List<Product> products = [
     size: 750,
     description: dummyText,
     image: 'assets/images/licor_43.png',
-    color: Color(0xFFC48507),
+    color: Color(0xFFF2CB05),
   ),
   Product(
     id: 6,
