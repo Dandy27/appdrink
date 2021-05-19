@@ -1,8 +1,10 @@
 import 'package:appdrink/constants.dart';
 import 'package:appdrink/models/Product.dart';
+import 'package:appdrink/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'categories.dart';
+import 'item_card.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -11,7 +13,7 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin ),
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
           child: Text(
             'Products',
             style: Theme.of(context)
@@ -23,7 +25,7 @@ class Body extends StatelessWidget {
         Categories(),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin * 1.2),
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
             child: GridView.builder(
               itemCount: products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -33,6 +35,10 @@ class Body extends StatelessWidget {
                   childAspectRatio: 0.75),
               itemBuilder: (context, index) => ItemCard(
                 product: products[index],
+                press: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailsScreen(
+                      product: products[index],
+                    ),),),
               ),
             ),
           ),
@@ -41,48 +47,3 @@ class Body extends StatelessWidget {
     );
   }
 }
-
-class ItemCard extends StatelessWidget {
-  final Product product;
-  final Function press;
-  const ItemCard({
-    Key key,
-    this.product,
-    this.press,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: EdgeInsets.all(kDefaultPaddin),
-          height: 180,
-          width: 160,
-          decoration: BoxDecoration(
-            color: product.color,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Image.asset(
-            product.image,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
-          child: Text(
-            product.title,
-            style: TextStyle(color: kTextLightColor),
-          ),
-        ),
-        Text(
-          '\$234',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        )
-        // products is out demo list
-      ],
-    );
-  }
-}
-
-// we need stateful widget for our categories
